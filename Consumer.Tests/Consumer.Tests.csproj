@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -18,13 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\Consumer\Consumer.Application\Consumer.Application.csproj" />
+    <ProjectReference Include="..\Consumer\Consumer.Domain\Consumer.Domain.csproj" />
+    <ProjectReference Include="..\Consumer\Consumer.Infrastructure\Consumer.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Consumer\Consumer.Application\Consumer.Application.csproj" />
-    <ProjectReference Include="..\..\Consumer\Consumer.Domain\Consumer.Domain.csproj" />
-    <ProjectReference Include="..\..\Consumer\Consumer.Infrastructure\Consumer.Infrastructure.csproj" />
+    <Using Include="Xunit" />
   </ItemGroup>
 
+	
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Producer.API.Settings
+﻿namespace Producer.Infrastructure.Settings
 {
     public class MongoDbSettings
     {

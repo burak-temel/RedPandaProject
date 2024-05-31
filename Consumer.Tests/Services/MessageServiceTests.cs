@@ -26,14 +26,14 @@ namespace Consumer.Tests.Services
             var message = "test message";
 
             _mockMessageRepository
-                .Setup(r => r.InsertAsync(It.IsAny<ConsumerModel>()))
+                .Setup(r => r.SaveMessageAsync(It.IsAny<ConsumerModel>()))
                 .Returns(Task.CompletedTask);
 
             // Act
             await _messageService.ProcessMessageAsync(message);
 
             // Assert
-            _mockMessageRepository.Verify(r => r.InsertAsync(It.IsAny<ConsumerModel>()), Times.Once);
+            _mockMessageRepository.Verify(r => r.SaveMessageAsync(It.IsAny<ConsumerModel>()), Times.Once);
         }
     }
 }

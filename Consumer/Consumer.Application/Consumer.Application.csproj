@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Models\Common.Models.csproj" />
     <ProjectReference Include="..\Consumer.Domain\Consumer.Domain.csproj" />
     <ProjectReference Include="..\Consumer.Infrastructure\Consumer.Infrastructure.csproj" />
   </ItemGroup>

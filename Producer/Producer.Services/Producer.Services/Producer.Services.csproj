@@ -8,17 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
-    <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Consumer.Domain\Consumer.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Workers\" />
+    <ProjectReference Include="..\..\Producer.Infrastructure\Producer.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

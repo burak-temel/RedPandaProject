@@ -1,12 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Models\Common.Models.csproj" />
     <ProjectReference Include="..\Producer.Domain\Producer.Domain.csproj" />
     <ProjectReference Include="..\Producer.Infrastructure\Producer.Infrastructure.csproj" />
+    <ProjectReference Include="..\Producer.Services\Producer.Services\Producer.Services.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

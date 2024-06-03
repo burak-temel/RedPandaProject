@@ -6,7 +6,7 @@ using Producer.Infrastructure.Settings;
 namespace Producer.Services
 {
 
-    public class RedPandaService<TRequest, TResponse> : IDisposable
+    public class RedPandaService<TRequest, TResponse> : IRedPandaService<TRequest, TResponse>, IDisposable
     {
         private readonly IProducer<Null, string> _producer;
 

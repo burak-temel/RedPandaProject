@@ -5,20 +5,21 @@ using Newtonsoft.Json;
 
 namespace Consumer.Services
 {
-    public class RedPandaService<TRequest, TResponse> : IDisposable
+    public class RedPandaService<TRequest, TResponse> : IRedPandaService<TRequest, TResponse>
     {
+        private readonly IProducer<Null, string> _producer;
         private readonly IConsumer<Ignore, string> _consumer;
 
-        public RedPandaService(IOptions<KafkaSettings> kafkaSettings)
+        public RedPandaService(IProducer<Null, string> producer, IConsumer<Ignore, string> consumer)
         {
-            var consumerConfig = new ConsumerConfig
-            {
-                GroupId = kafkaSettings.Value.GroupId,
-                BootstrapServers = kafkaSettings.Value.BootstrapServers,
-                AutoOffsetReset = AutoOffsetReset.Earliest
-            };
+            _producer = producer;
+            _consumer = consumer;
+        }
 
-            _consumer = new ConsumerBuilder<Ignore, string>(consumerConfig).Build();
+        public async Task PublishRequestAsync(TRequest request, string topic)
+        {
+            var jsonMessage = JsonConvert.SerializeObject(request);
+            await _producer.ProduceAsync(topic, new Message<Null, string> { Value = jsonMessage });
         }
 
         public TRequest ConsumeMessage(string topic, CancellationToken cancellationToken)
@@ -40,6 +41,7 @@ namespace Consumer.Services
 
         public void Dispose()
         {
+            _producer.Dispose();
             _consumer.Dispose();
         }
     }

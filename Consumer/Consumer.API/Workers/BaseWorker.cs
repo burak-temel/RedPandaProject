@@ -5,13 +5,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
 namespace Consumer.API.Workers
-{ 
+{
     public abstract class BaseWorker<TRequest> : BackgroundService
     {
         private readonly string _topic;
-        private readonly RedPandaService<TRequest, string> _redPandaService;
+        private readonly IRedPandaService<TRequest, string> _redPandaService;
 
-        protected BaseWorker(IOptions<KafkaSettings> kafkaSettings, string topic, RedPandaService<TRequest, string> redPandaService)
+        protected BaseWorker(string topic, IRedPandaService<TRequest, string> redPandaService)
         {
             _topic = topic;
             _redPandaService = redPandaService;
